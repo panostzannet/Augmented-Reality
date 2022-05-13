@@ -4,49 +4,63 @@
     <!-- we import arjs version without NFT but with marker + location based support -->
     <!--<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>-->
     <script src="build/aframe-ar.js"></script>
-    
+
     <!-- particles system component -->
     <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
-    
+
     <!-- speech command component -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
-    <script src="build/aframe-speech-command-component.js"></script> 
-    
+    <script src="build/aframe-speech-command-component.js"></script>
+
 
     <body style="margin : 0px; overflow: hidden;">
+        <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+        <a-marker preset="hiro">
+          <!--Shapes-->
+            <a-entity id="box" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.5" position="-0.5 0.5 1.5" material="color: #4CC3D9"></a-entity>
+            <a-entity id="sphere" geometry="primitive: sphere; radius:  0.2" material="color: #EF2D5E" position="1 2 1"></a-entity>
+            <a-entity id="cylinder" geometry="primitive: cylinder; radius: 0.2; height: 0.2" position="1 0,25 0.5" material="color: #FFC65D"></a-entity>
 
-        <a-scene  vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;"  embedded arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;" >
-
-            <a-entity id="annyang" annyang-speech-recognition></a-entity>
-
-            <a-entity id="switch" 
-                speech-command__start="command: start; type: attribute; attribute: visible; targetElement: snow; value: true;"
-                speech-command__stop="command: stop; type: attribute; attribute: visible; value: false;">
+            <!--Snow-->
+                <a-entity id="annyang" annyang-speech-recognition></a-entity>
+             <script src="aframe-speech-command-component.js"></script>
+            <a-entity id="menu" position="0 2.25 -15" particle-system="preset: snow" visible="false"
+             speech-command__show="command: start; type: attribute; attribute: visible; value: true;"
+             speech-command__hide="command: stop; type: attribute; attribute: visible; value: false;">
             </a-entity>
-        
-            <a-entity id="snow" position="0 6 -15" particle-system="color: #ffffff" ></a-entity>
-            <a-marker preset="hiro">
-                <a-entity id="box" geometry="primitive: box; width: 0.2; depth: 0.2; height: 0.2;" position="0 0 0" material="color: #4CC3D9"></a-entity>
-                <a-entity id="sphere" geometry="primitive: sphere; radius:0.25" position="0 0.25 -0.5"  material="color: #EF2D5E"></a-entity>
-                <a-entity id="cylinder" geometry="primitive: cylinder; height: 0.4; radius:0.1" position="1 0.75 -0.3"  material="color: #FFC65D"></a-entity>    
             </a-marker>
 
-          
-         
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <a-entity camera></a-entity>
 
-        </a-scene>
-    </body>
-</html>
+            <!-- DPSD -->
+           <a-marker-camera type='pattern' url='assets/pattern-DPSD7.patt'>
+           <!--NAME KAI IMAGE-->
+           <a-entity rotation="-90 0 0" position="0 0 0" >
+           <a-text value="RAPTIS" align="center" position="0 -0.9 0" side="double" ></a-text>
+           <a-text value="DIMITRIS" align="center" position="0 -0.7 0" side="double"></a-text>
+           <a-image src="assets/sponge.jpg" position="0 0.5 0" side="double" width="1" height="1"></a-image>
+           </a-marker-camera>
+
+
+           <!-- HYDROGEN-->
+           <a-assets>
+           <a-asset-item id="hydro" src="assets/hydrogen.gltf"></a-asset-item>
+           </a-assets>
+           <a-marker type='pattern' url='assets/pattern-card-H.patt'>
+           <a-entity gltf-model="#hydro" scale= "0.2 0.2 0.2";></a-entity>
+           </a-marker>
+
+
+           <!--OXYGEN-->
+           <a-assets>
+           <a-asset-item id="oxy" src="assets/oxygen.gltf"></a-asset-item>
+           </a-assets>
+           <a-marker type='pattern' url='assets/pattern-card-O.patt'>
+           <a-entity gltf-model="#oxy" scale= "0.5 0.5 0.5";></a-entity>
+           </a-marker>
 
 
 
