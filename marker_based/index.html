@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
     <!-- we import arjs version without NFT but with marker + location based support -->
@@ -12,60 +12,100 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
     <script src="build/aframe-speech-command-component.js"></script>
 
+<!--Deliverable_2-->
+  <body style="margin : 0px; overflow: hidden;">
+    <script>
+    AFRAME.registerComponent("marker-distance", {
+        init: function()
+        {
+        this.hydrogen = document.querySelector("#hydrogen")
+        this.oxygen = document.querySelector("#oxygen")
+        this.water = document.querySelector("#water")
+        this.marker1 = document.querySelector('#marker1')
+        this.marker2 = document.querySelector('#marker2')
+      },
 
-    <body style="margin : 0px; overflow: hidden;">
-        <a-scene
+      tick: function () {
+
+              var marker1Pos, marker2Pos, distance
+              marker1Pos = new THREE.Vector3();
+              this.marker1.object3D.getWorldPosition(marker1Pos);
+
+              marker2Pos = new THREE.Vector3();
+              this.marker2.object3D.getWorldPosition(marker2Pos);
+
+              //distance
+              distance = marker1Pos.distanceTo(marker2Pos);
+
+              if (distance<2){
+                this.hydrogen.setAttribute("visible", false)
+                this.oxygen.setAttribute("visible", false)
+                this.water.setAttribute("visible", true)
+              }
+              else{
+                this.hydrogen.setAttribute("visible",true)
+                this.oxygen.setAttribute("visible",true)
+                this.water.setAttribute("visible", false)
+              }
+            },
+          });
+
+    </script>
+
+    <a-scene
     vr-mode-ui="enabled: false;"
     renderer="logarithmicDepthBuffer: true;"
     embedded
-                 
     arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
-        <a-marker preset="hiro">
-          <!--Shapes-->
-            <a-entity id="box" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.5" position="-0.5 0.5 1.5" material="color: #4CC3D9"></a-entity>
-            <a-entity id="sphere" geometry="primitive: sphere; radius:  0.2" material="color: #EF2D5E" position="1 2 1"></a-entity>
-            <a-entity id="cylinder" geometry="primitive: cylinder; radius: 0.2; height: 0.2" position="1 0,25 0.5" material="color: #FFC65D"></a-entity>
 
-            
-                <a-entity id="annyang" annyang-speech-recognition></a-entity>
-             <script src="aframe-speech-command-component.js"></script>
-            <a-entity id="menu" position="0 2.25 -15" particle-system="preset: snow" visible="false"
+    <!--Reading my dpsd marker-->
+    <a-marker type='pattern' url='assets/pattern-dpsd.patt'>
+    <!--Showing my name and the image-->
+    <a-entity rotation="-90 0 0" position="0 0 0" >
+      <a-text value="Thanasis" align="center" position="0 -0.85 0" side="double"></a-text>
+      <a-text value="Slavidis" position="0 -0.65 0" align="center" side="double"></a-text>
+      <a-image src="assets/Bruce_Dj.jpg" position="0 0 0" side="double" width="1" height="1"></a-image>
+    </a-entity>
+    </a-marker>
+
+    <!--Assets hydrogen, oxygen, water-->
+    <a-asset-item id="hydrogen_asset" src="assets/Hydrogen.gltf"></a-asset-item>
+
+    <a-asset>
+     <a-asset-item id="oxygen_asset" src="assets/Oxygen.gltf"></a-asset-item>
+     <a-asset-item id="water_asset" src="assets/H2O.gltf"></a-asset-item>
+    </a-asset>
+
+    <!--Markers hydrogen, oxygen, hydrogen-->
+    <a-marker id="marker1" type="pattern" url="assets/pattern-card-O.patt">
+     <a-entity id="oxygen" gltf-model="#oxygen_asset" scale= "0.7 0.7 0.7"  position="0 0.5 0"></a-entity>
+     <a-entity id="water" gltf-model="#water_asset" scale= "1 1 1"  position="0 0.5 0"></a-entity>
+    </a-marker>
+
+    <a-marker id="marker2" type="pattern" url="assets/pattern-card-H.patt">
+      <a-entity id="hydrogen" gltf-model="#hydrogen_asset" scale= "0.4 0.4 0.4"  position="0 0.5 0"></a-entity>
+    </a-marker>
+
+    <!--Calling marker distance-->
+    <a-entity marker-distance></a-entity>
+
+
+<!--Deliverable_1-->
+   <a-marker preset="hiro">
+          <!--Shapes-->
+            <a-entity id="box" geometry="primitive: box; width: 1; depth: 1; height: 1" position="-1 0.5 0" material="color: #4CC3D9"></a-entity>
+            <a-entity id="sphere" geometry="primitive: sphere; radius: 0.8" material="color: #EF2D5E" position="0 1.25 -2"></a-entity>
+            <a-entity id="cylinder" geometry="primitive: cylinder; radius: 0.5; height: 1.5" position="1 0.75 0" material="color: #FFC65D"></a-entity>
+
+            <!--Snow-->
+            <a-entity id="annyang" annyang-speech-recognition></a-entity>
+            <a-entity id="links" position="0 2.25 -15" particle-system="preset: snow" visible="false"
              speech-command__show="command: start; type: attribute; attribute: visible; value: true;"
              speech-command__hide="command: stop; type: attribute; attribute: visible; value: false;">
             </a-entity>
-            </a-marker>
-
-
-     
-           <a-marker-camera type='pattern' url='assets/pattern-DPSD.patt '>
-           <!--NAME KAI IMAGE-->
-           <a-entity rotation="-90 0 0" position="0 0 0" >
-           <a-text value="TZANNETAKOS" align="center" position="0 -0.9 0" side="double" ></a-text>
-           <a-text value="PANAGIOTIS" align="center" position="0 -0.7 0" side="double"></a-text>
-           <a-image src="assets/sponge.jpg" position="0 0.5 0" side="double" width="1" height="1"></a-image>
-           </a-marker-camera>
-
-
-           <!-- HYDROGEN-->
-           <a-assets>
-           <a-asset-item id="hydro" src="assets/hydrogen.gltf"></a-asset-item>
-           </a-assets>
-           <a-marker type='pattern' url='assets/pattern-card-H.patt'>
-           <a-entity gltf-model="#hydro" scale= "0.2 0.2 0.2";></a-entity>
-           </a-marker>
-
-
-           <!--OXYGEN-->
-           <a-assets>
-           <a-asset-item id="oxy" src="assets/oxygen.gltf"></a-asset-item>
-           </a-assets>
-           <a-marker type='pattern' url='assets/pattern-card-O.patt'>
-           <a-entity gltf-model="#oxy" scale= "0.5 0.5 0.5";></a-entity>
-           </a-marker>
-
+   </a-marker>
         <a-entity camera></a-entity>
         </a-scene>
     </body>
 </html>
-
 
