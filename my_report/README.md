@@ -18,7 +18,24 @@
 
 # 2nd Deliverable
 
-![Assets](https://github.com/panostzannet/Augmented-Reality/tree/main/marker_based/hydro.png)
+Τα αρχικα βηματα που ακολουθησα ηταν να δημιουργησω με τη βοηθεια του blender το υδρογονο το οξυγονο και το νερο. Επειτα τα εκανα export σε μορφη gltf για να μπορει να εμφανιζεται το τρισδιαστατο μοντελο τους οταν τα εμφανιζω στην καμερα. Στο paint εφιταξα το dpsd μου και μετα το μετετρεψα σε μορφη marker. Σε μορφη marker εκανα και τα στοιχεια του υδρογονου και του οξυγονου. Στη συνεχεια βρηκα μια φωτογραφια για να εμφανιζεται πανω απο το ονομα μου στην καμερα. Τελος προσαρμοσα τον κωδικα για να μπορω να πετυχω τα παραπανω
+
+![Assets](https://github.com/panostzannet/Augmented-Reality/blob/main/marker_based/hydro.png)
+
+![Assets](https://github.com/panostzannet/Augmented-Reality/blob/main/marker_based/oxy.png)
+
+![Assets](https://github.com/panostzannet/Augmented-Reality/blob/main/marker_based/water.png)
+
+![Assets](https://github.com/panostzannet/Augmented-Reality/blob/main/marker_based/assets.png)
+
+Παρακατω τα links των εργαλειων που χρησιμοποιησα:
+
+https://www.blender.org/
+
+https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html
+
+
+
 # 3rd Deliverable 
 
 
