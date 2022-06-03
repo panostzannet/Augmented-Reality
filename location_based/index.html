@@ -19,6 +19,13 @@
      <a-assets>
              <a-asset-item id="tmal" src="assets/scene.gltf"></a-asset-item>
       </a-assets>
+	    
+	    <a-entity id="tmal_model" position="0 0 -180" class="click"
+                      scale="0.2 0.2 0.2"
+                      gltf-model="#tmal"
+		                  animation__rotate = "property: rotation; dur: 5000; easing: linear; dir: normal; from:0 0 0; to: 0 360 0; loop: true;"
+                      gps-entity-place="latitude: 44.506477; longitude: 11.301524;" information>
+            </a-entity>
 
 
         <a-camera
