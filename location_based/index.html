@@ -38,21 +38,21 @@
       <a-entity id="head" camera wasd-controls look-controls cursor="rayOrigin: mouse" position="0 1.6 0"></a-entity>
     </a-entity>
 
-    <!--Christ_The_Redeemer_Model-->
+   
       <a-assets>
-             <a-asset-item id="rio" src="assets/scene.gltf"></a-asset-item>
+             <a-asset-item id="tmal" src="assets/scene.gltf"></a-asset-item>
       </a-assets>
 
-    <!--Christ_The_Redeemer_Model and Text-->
-            <a-entity id="rio_model" position="0 0 -180" class="click"
-                      scale="5 5 5"
-                      gltf-model="#rio"
+    
+            <a-entity id="tmal_model" position="0 0 -180" class="click"
+                      scale="0.2 0.2 0.2"
+                      gltf-model="#tmal"
 		                  animation__rotate = "property: rotation; dur: 5000; easing: linear; dir: normal; from:0 0 0; to: 0 360 0; loop: true;"
                       gps-entity-place="latitude: 44.506477; longitude: 11.301524;" information>
             </a-entity>
 
-    <!--Christ_The_Redeemer  Text-->
-      <a-text id="text_info" class="clickable" text="value: Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil"
+  
+      <a-text id="text_info" class="clickable" text="value: The Taj Mahal is an ivory-white marble mausoleum in the Indian city of Agra. "
            position="0 0 -90"
            color= "#F4D35E"
            scale="7 7 7"
@@ -63,7 +63,7 @@
 
     <a-camera
             rotation-reader
-            gps-camera="simulateLatitude: 44.504348; simulateLongitude: 11.301027; minDistance: 1; maxDistance: 700;" >
-    </a-camera>
+            gps-camera="simulateLatitude: 44.504348; simulateLongitude: 11.301027; minDistance: 1; maxDistance: 700;">
+		</a-camera>
 	</a-scene>
 </body>
