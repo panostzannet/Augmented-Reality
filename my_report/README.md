@@ -38,6 +38,21 @@ https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples
 
 # 3rd Deliverable 
 
+Για το τριτο παραδοτεο αποφασισα να χρησιμοποιησω σαν 3D μοντελο το αγαλμα της ελευθεριας που βρισκεται στη Νεα Υορκη απο το SketchFab (https://sketchfab.com/search?q=statue+of+liberty&type=models) 
+
+![Assets](https://github.com/panostzannet/Augmented-Reality/blob/main/location_based/assets/statue.png)
+
+Αφου το κατεβασα και το εβαλακ μεσα στον κωδικα μου εκανα καποιες αλλαγες για να μπορεσει ο χρηστης να κανει click πανω του και να εμφανιζεται ενα text περιγραφοντας το που βρισκεται 
+
+Ταυτοχρονα το εκανα edit ετσι ωστε να περιστρεφεται 
+
+Για το syros.html κατεβασα μια φωτογραφια του δημαρχειου που βρισκεται στην πλατεια Μιαουλη και την εβαλα στον κωδικα μαζι με ενα text για αυτο
+
+![Assets](https://github.com/panostzannet/Augmented-Reality/blob/main/location_based/assets/townhall.jpg)
+
+
+
+
 
 # Conclusions
 
